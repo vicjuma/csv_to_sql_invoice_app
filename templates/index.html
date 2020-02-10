@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+.important { color: #336699; }
+</style>
+{% endblock %}
+{% block content %}
+  <h1 class="text-center mt-4">Invoice Application</h1>
+  <div class="container">
+      <div class="jumbotron mt-4">
+        <form action="/data" method="post" enctype="multipart/form-data" class="text-center">
+          <input type="file" name="data_file" />
+          <input type="submit" class="btn btn-primary btn-sm"/>
+        </form>
+      </div>
+  </div>
+{% endblock %}
