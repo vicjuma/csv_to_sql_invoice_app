@@ -54,3 +54,24 @@ def monthly_totals():
         "forteenth": feb2020 
     }
     return monthly
+
+
+  # top 5 yearly
+  def top_customers():
+    top2019 = pd.read_sql('SELECT [*contactname], [*quantity] * [*unitamount] AS amount FROM invoices WHERE [*invoicedate] LIKE "%2019" ORDER BY amount DESC LIMIT 5', con=db.engine).to_dict()["*ContactName"]
+
+    top2020 = pd.read_sql('SELECT [*contactname], [*quantity] * [*unitamount] AS amount FROM invoices WHERE [*invoicedate] LIKE "%2020" ORDER BY amount DESC LIMIT 5', con=db.engine).to_dict()["*ContactName"]
+
+    customers = {
+        "one": top2019[0],
+        "two": top2019[1],
+        "three": top2019[2],
+        "four": top2019[3],
+        "five": top2019[4],
+        "six": top2020[0],
+        "seven": top2020[1],
+        "eight": top2020[2],
+        "nine": top2020[3],
+        "ten": top2020[4]
+    }
+    return customers
