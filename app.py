@@ -3,6 +3,7 @@ from flask import Flask, request, render_template, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
 import os
+from data import monthly_totals
 
 # initializing my app instance and setting up DB and configuration variables
 app = Flask(__name__)
@@ -26,7 +27,7 @@ def transform_view():
         f = request.files['data_file']
         df = pd.read_csv(f, parse_dates=True, usecols=[0, 10, 12, 13, 16, 17, 18], encoding='UTF-16 LE')
         df.to_sql('invoices', con=db.engine, index=False, index_label='id', if_exists='replace')
-        return "valid"
+        return render_template('data.html', monthly_totals=monthly_totals())
     return 'Oops, Try again something went wrong!'
 
 
