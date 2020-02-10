@@ -13,6 +13,13 @@ db = SQLAlchemy(app)
 ALLOWED_EXTENSIONS = set(['csv'])
 
 
+# form get route
+@app.route('/', methods=["GET"])
+def home():
+    return render_template('index.html')
+
+
+# file post route
 @app.route('/data', methods=["POST", "GET"])
 def transform_view():
     f = request.files['file']
