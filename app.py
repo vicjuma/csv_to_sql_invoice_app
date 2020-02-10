@@ -65,14 +65,14 @@ def transform_view():
     plt.style.use("seaborn")
     fig, (ax1, ax2) = plt.subplots(2)
     fig.suptitle("GRAPHICAL PRESENTATIONS")
-    ax1.plot(["Nov7","Nov10","Nov14","Nov15","Nov19","Nov20","Nov24","Nov29"],[day0,day1,day2,day3,day4,day5,day6,day7])
+    ax1.plot(["Nov7","Nov10","Nov14","Nov15","Nov19","Nov20","Nov24","Nov29"],[day0,day1,day2,day3,day4,day5,day6,day7], color='blue')
 
-    ax2.barh([y4,y3,y2,y1,y0], [x4,x3,x2,x1,x0], height=.8, color="blue")
+    ax2.barh([y4,y3,y2,y1,y0], [x4,x3,x2,x1,x0], color="blue")
 
-    plt.savefig('graph.png')
+    plt.savefig('graphs.png')
 
-    if not os.path.isfile(dest + '/graph.png'):
-        os.rename(src + "/graph.png", dest + "/graph.png")
+    if not os.path.isfile(dest + '/graphs.png'):
+        os.rename(src + "/graphs.png", dest + "/graphs.png")
 
     return render_template('data.html', monthly_totals=monthly_totals(), customers=top_customers(), general=general_top_five())
 
